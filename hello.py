@@ -1,4 +1,3 @@
-
-print("iR U ** kidding me? OK?")
+print("hello world")
 for i in range(5):
     print("yes")
