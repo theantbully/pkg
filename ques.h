@@ -2,10 +2,10 @@
 #include <iostream>
 using std::stack;
 using std::cout;
-
+//å¤å°¼å‰å¨ƒ
 struct LNode { int val; LNode* next; };
 
-//1 - ½öÓÃµİ¹éÊµÏÖstackµÄ·´×ª
+//1 - ä»…ç”¨é€’å½’å®ç°stackçš„åè½¬
 int getRemoveLast(stack<int> &S) {
 	int result = S.top();
 	S.pop();
@@ -34,17 +34,17 @@ void reverse(stack<int>&S) {
 }
 
 
-//2 - ººÅµËş ***
+//2 - æ±‰è¯ºå¡” ***
 void HN(int n, char A, char B, char C)
 {
 	if (n == 0)
 		return;
-	HN(n - 1, A, C, B); // ½èÖúC, ½«n-1¸öÔ²»·´ÓAÒÆµ½B, A->C->B
-	cout << "move " << n << " from " << A << " to " << C << '\n'; // AµÄ×îºóÒ»¸öÔ²»·, ´ÓAµ½C
-	HN(n - 1, B, A, C); // ½èÖúA, ½«n-1¸öÔ²»·´ÓBÒÆµ½C, B->A->C
+	HN(n - 1, A, C, B); // å€ŸåŠ©C, å°†n-1ä¸ªåœ†ç¯ä»Aç§»åˆ°B, A->C->B
+	cout << "move " << n << " from " << A << " to " << C << '\n'; // Açš„æœ€åä¸€ä¸ªåœ†ç¯, ä»Aåˆ°C
+	HN(n - 1, B, A, C); // å€ŸåŠ©A, å°†n-1ä¸ªåœ†ç¯ä»Bç§»åˆ°C, B->A->C
 }
 
-//4-µ¥Á´±í·´×ª ***
+//4-å•é“¾è¡¨åè½¬ ***
 LNode* reverseLNode(LNode* head) {
 	LNode* pre = nullptr;
 	LNode* after = nullptr;
@@ -52,14 +52,14 @@ LNode* reverseLNode(LNode* head) {
 	{
 		after = pre;
 		pre = head;
-		//ÏÂÃæÁ½¾äÏÈºóË³Ğò²»ÄÜµßµ¹
+		//ä¸‹é¢ä¸¤å¥å…ˆåé¡ºåºä¸èƒ½é¢ å€’
 		head = head->next;
 		pre->next = after;
 	}
 	return pre;
 }
 
-//5 - ·´×ªÁ´±í²¿·ÖÇøÓò£º from->end
+//5 - åè½¬é“¾è¡¨éƒ¨åˆ†åŒºåŸŸï¼š from->end
 LNode* reverseLNode(LNode* head, int from, int end) {
 	LNode* hh = head, *hhh = hh;;
 	LNode* pre = nullptr;
@@ -105,7 +105,7 @@ LNode* reverseLNode(LNode* head, int from, int end) {
 
 bool isHuiWenLink(LNode* head) {
 	LNode* hh = head, *hhh = hh;
-	int i;  //Á´±í³¤¶È
+	int i;  //é“¾è¡¨é•¿åº¦
 	for (i = 0; hhh != nullptr; i++)
 	{
 		hhh = hhh->next;
@@ -129,8 +129,8 @@ bool isHuiWenLink(LNode* head) {
 	return true;
 }
 
-//6-2¸öÁ´±íÊı×ÖÇóºÍ
-//ÏÈ½«2Á´±í·´×ª, ÔÙ´Ó×óÖÁÓÒÇóºÍ(×¢Òâ½øÎ»), ½«½á¹ûÔÙ·´×ª¼´¿É
+//6-2ä¸ªé“¾è¡¨æ•°å­—æ±‚å’Œ
+//å…ˆå°†2é“¾è¡¨åè½¬, å†ä»å·¦è‡³å³æ±‚å’Œ(æ³¨æ„è¿›ä½), å°†ç»“æœå†åè½¬å³å¯
 LNode* addedLK(LNode* head1, LNode* head2) {
 	LNode* head = nullptr, *h = nullptr, *pre;
 	head1 = reverseLNode(head1);
@@ -214,9 +214,9 @@ LNode* addedLK(LNode* head1, LNode* head2) {
 
 
 double min(double a, double b) { return a > b ? b : a; }
-//7-¾ØÕó×îĞ¡Â·¾¶: ×óÉÏ½Ç->ÓÒÏÂ½Ç
+//7-çŸ©é˜µæœ€å°è·¯å¾„: å·¦ä¸Šè§’->å³ä¸‹è§’
 void DP() {
-	//·½·¨1: ¶şÎ¬¾ØÕó, Ìî±í
+	//æ–¹æ³•1: äºŒç»´çŸ©é˜µ, å¡«è¡¨
 	//vector<int> vvec = { 0,0,0,0 };
 	//vector<vector<int> > Map;
 	//for (int i = 0; i < 4; i++)
@@ -246,12 +246,12 @@ void DP() {
 	//}
 	
 
-	//·½·¨¶ş: Ò»Î¬ÏòÁ¿¶¯Ì¬É¨Ãè-¸²¸Ç
+	//æ–¹æ³•äºŒ: ä¸€ç»´å‘é‡åŠ¨æ€æ‰«æ-è¦†ç›–
 	//vector<int> vvec ={ 1,4,9,18 };
 	//for (int i = 1; i < 4;i++)
 	//{	// vvec: (i-1, *)
 
-	//	vvec[0] = vvec[0] + vec[i][0]; //±¾ĞĞ¼ÆËã: vvec[i,0]
+	//	vvec[0] = vvec[0] + vec[i][0]; //æœ¬è¡Œè®¡ç®—: vvec[i,0]
 	//	for (int j = 1; j < 4; j++)
 	//	{   // vvec[i,j] = min( vvec[i-1, j], vvec[i,j-1] ) + vec[i][j]
 	//		int M = (int)min(vvec[j] , vvec[j - 1]) + vec[i][j];
@@ -261,8 +261,8 @@ void DP() {
 	return;
 }
 
-//8-×î´óµİÔöÊı×Ö×ÓĞòÁĞ
-//Ê±¼ä¸´ÔÓ¶ÈO(N^2)
+//8-æœ€å¤§é€’å¢æ•°å­—å­åºåˆ—
+//æ—¶é—´å¤æ‚åº¦O(N^2)
 int maxLenSubList(int a[]) {
 	//for (int i = 0; i < 9; i++)
 	//{
@@ -277,11 +277,11 @@ int maxLenSubList(int a[]) {
 }
 
 
-//9-¶¯Ì¬¹æ»®µÄÌ×Â·:
-// ×ÓÎÊÌâ·Ö½â->dp±íµÄµÚÒ»ĞĞ¡¢µÚÒ»ÁĞ³õÊ¼»¯
-// -> ´ÓÉÏÖÁÏÂ¡¢´Ó×óÖÁÓÒÌîĞ´dp±í
+//9-åŠ¨æ€è§„åˆ’çš„å¥—è·¯:
+// å­é—®é¢˜åˆ†è§£->dpè¡¨çš„ç¬¬ä¸€è¡Œã€ç¬¬ä¸€åˆ—åˆå§‹åŒ–
+// -> ä»ä¸Šè‡³ä¸‹ã€ä»å·¦è‡³å³å¡«å†™dpè¡¨
 int maxLenCommonSubStr(char str1[], char str2[]) {
-	//×î³¤¹«¹²×ÓĞòÁĞ, ²»ĞèÒª×ÓĞòÁĞµÄÔªËØ½ôÁÚ
+	//æœ€é•¿å…¬å…±å­åºåˆ—, ä¸éœ€è¦å­åºåˆ—çš„å…ƒç´ ç´§é‚»
 	/*dp[0][0] = str1[0] == str2[0] ? 1 : 0;
 
 	for (int i = 1; i < strlen(str1); i++)
@@ -311,7 +311,7 @@ int maxLenCommonSubStr(char str1[], char str2[]) {
 	return 0;// dp[9][11];
 }
 
-//10- ×Ó´®µÄ×Ö·û±ØĞë½ôÁÚ
+//10- å­ä¸²çš„å­—ç¬¦å¿…é¡»ç´§é‚»
 int maxCommonSubStr(char str1[], char str2[]) {
 	int dp[11][11] = { 0 };  //row: str1, col:str2
 	dp[0][0] = str1[0] == str2[0] ? 1 : 0;
@@ -330,7 +330,7 @@ int maxCommonSubStr(char str1[], char str2[]) {
 	return 0;
 }
 
-//11- a[i]==k:±íÊ¾´Óa[i]¿ÉÒÔÇ°Ìø[1~k]²½, Çóµ½aÄ©Î²µÄ×î¶Ì²½Êı
+//11- a[i]==k:è¡¨ç¤ºä»a[i]å¯ä»¥å‰è·³[1~k]æ­¥, æ±‚åˆ°aæœ«å°¾çš„æœ€çŸ­æ­¥æ•°
 int JumpSteps(int a[])
 {
 	int jump = 0, next = 0, current = 0;
@@ -342,28 +342,28 @@ int JumpSteps(int a[])
 	//		current = next;
 	//		cout << next << "->";
 	//	}
-	//	next = max(i + a[i], next); //±éÀúa, Ñ¡Ôñ×îÔ¶¿Éµ½µÄÏÂÒ»²½
+	//	next = max(i + a[i], next); //éå†a, é€‰æ‹©æœ€è¿œå¯åˆ°çš„ä¸‹ä¸€æ­¥
 	//}
 	return jump;
 }
 
-//12- std::qsortÊ¹ÓÃ·½·¨
+//12- std::qsortä½¿ç”¨æ–¹æ³•
 void QSORT(int arr[]) {
 	// int arr[] = { 100, 4,  103, 200,  104, 5,1, 2, 105, 3, 101, 102 };
 	std::qsort(arr, sizeof(arr) / sizeof(*arr), sizeof(*arr), [](const void  * aa, const  void  * bb) {	return *(int*)aa - *(int*)bb; });
 }
 
-//13-Î»ÔËËã-²»ÓÃ±È½Ï, Çó³ö2ÕûÊıÊıµÄ½Ï´óÖµ
+//13-ä½è¿ç®—-ä¸ç”¨æ¯”è¾ƒ, æ±‚å‡º2æ•´æ•°æ•°çš„è¾ƒå¤§å€¼
 int max_int(int a, int b) {
 
 	int c = a - b;
 	bool signa = (a >> 31) & 0x01;
 	bool signb = (b >> 31) & 0x01;
 	bool signc = (c >> 31) & 0x01;
-	bool dif_ab = signa^signb;  //ÅĞ¶Ïa¡¢bÊÇ·ñÒìºÅ
+	bool dif_ab = signa^signb;  //åˆ¤æ–­aã€bæ˜¯å¦å¼‚å·
 
-	int s1 = (1 - dif_ab)*((1 - signc)*a + signc*b);// a¡¢bÍ¬ºÅ, dif_ab==0
-	int s2 = dif_ab*((1 - signa)*a + (1 - signb)*b);//a¡¢bÒìºÅ, dif_ab==1, ±ØÓĞÒ»ÕıÒ»¸º, ÁôÏÂÕıÊı
+	int s1 = (1 - dif_ab)*((1 - signc)*a + signc*b);// aã€båŒå·, dif_ab==0
+	int s2 = dif_ab*((1 - signa)*a + (1 - signb)*b);//aã€bå¼‚å·, dif_ab==1, å¿…æœ‰ä¸€æ­£ä¸€è´Ÿ, ç•™ä¸‹æ­£æ•°
 	return s1 + s2;
 
 }
