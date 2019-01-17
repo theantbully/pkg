@@ -2,7 +2,6 @@
 #include <iostream>
 using std::stack;
 using std::cout;
-//gu ni ji wa
 struct LNode { int val; LNode* next; };
 
 //1 - 仅用递归实现stack的反转
